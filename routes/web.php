@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\user\AuthController;
+use App\Http\Controllers\user\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +16,19 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-// Route::get('/admin/service', function () {
-//     return view('welcome');
-// });
 
 
-Route::get('/', [ServiceController::class, 'index']);
-Route::post('/post', [ServiceController::class, 'store'])->name('post_service');
+Route::controller(HomeController::class)->group(function(){
+  Route::get('/',  'index')->name('HomePage');
+  Route::get('/service', 'service')->name('servicePage');
+  Route::get('/services', 'services')->name('servicesPage');
+});
+
+
+
+Route::controller(AuthController::class)->group(function(){
+  Route::get('/signup', 'signup')->name('signupPage');
+  Route::get('login', 'login')->name('loginPage');
+});
+
+
