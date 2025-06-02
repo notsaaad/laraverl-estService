@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+  --link-color:#6a89cc;
+  --link-hover-color:#0b1e7d;
+  --color-background: white;
+  --blue-text-color: #0b0b3b;
+  --color-primary-dark: #05294d;
+  --color-border: #ccc;
+  --color-shadow: #0b5bb080;
+  --color-text: var(--blue-text-color);
+  --main-transtion: all 100ms linear 5ms;
+  --dely-duration: 100ms;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+}
+#main{
+  display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.main-content{
+  width: 100%;
+  padding: 20px;
+  height: 100%;
+}
+
+
+/* ======================================== Start From ================================= */
+
+.main-form{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-form h2,
+.main-form p{
+  color: var(--blue-text-color);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.main-form p{
+  margin: 10px;
+  font-size: 16px;
+}
+
+
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: var(--blue-text-color);
+  border: 1px solid var(--blue-text-color);
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+form .row{
+  width: 100%;
+}
+
+
+.input-div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+
+
+.input-div label{
+  font-weight: bold;
+  text-align: left;
+}
+.input-div input,
+.input-div select{
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  font-size: 15px;
+  height: 40px;
+  padding: 15px;
+}
+
+.input-div select{
+  padding: 5px;
+}
+.input-div input:hover,
+.input-div input:focus,
+.input-div input:focus-visible{
+  outline: none;
+}
+
+.input-div input:focus,
+.input-div select:focus{
+  border-color: var(--blue-text-color);
+  outline: none;
+  box-shadow: 0 0 8px var(--color-shadow);
+}
+
+input[type="submit"],
+button[type="submit"]{
+  border: none;
+  border-radius: 5px;
+  color: var(--color-background);
+  font-weight: bold;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: var(--blue-text-color);
+  cursor: pointer;
+  width: 90%;
+  font-size: 14px;
+  align-self: center;
+  transition: var(--main-transtion);
+}
+input[type="submit"]:hover,
+button[type="submit"]:hover{
+  background-color: var(--color-primary-dark);
+  /* transform: scale(1.1); */
+}
+
+
+.password-with-icon{
+  position: relative;
+  width: 100%;
+}
+.password-with-icon input{
+  width: 100%;
+}
+.password-with-icon .eye{
+  position: absolute;
+  top: 50%;
+  right: 1px;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ======================================== End From ================================= */
+
+
+
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    padding-top: 20px;
+    overflow: auto;
+    border-right: 1px solid;
+
+}
+
+.sidebar a{
+    color: var(--link-color);
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 2;
+    transition: var(--main-transtion);
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background-color: var(--link-hover-color);
+    color: var(--color-background);
+    transition: var(--main-transtion);
+
+}
+
+
+
+.title{
+    margin: 16px;
+}
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.menu li a i {
+    margin-right: 10px;
+}
+
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+
+
+/* .menue-item:hover .submenu {
+    display: block;
+} */
+
+.sidebar a i{
+    margin-right: 10px;
+}
+.menue-item a{
+    position: relative;
+}
+.arrow-dropdown{
+    position: absolute;
+    right: 20px;
+    top: 42%;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+}
+
+.menue-item > a::after{
+    content: '\f107';
+    position: absolute;
+    right: 20px;
+    top: 42%;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    font-family: 'FontAwesome';
+}
+
+.menue-item.open > a::after{
+    content: '\f077';
+}
+.menue-item.open .submenu{
+    display: block;
+}
+
+.danger{
+  color:red !important;
+}
