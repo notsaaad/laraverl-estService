@@ -39,7 +39,7 @@ header{
   flex-wrap: wrap;
   align-items: center;
   min-height: 90px;
-  
+
 }
 
 header .logo span{
@@ -170,12 +170,12 @@ footer{
 }
 .footer-menu li{
   margin: 10px 0;
-  
+
 }
 .footer-menu li a{
   color:var(--black-color);
   font-weight: bold;
-  
+
 }
 .footer-foot{
   display: flex;
@@ -216,4 +216,34 @@ select{
   width: fit-content;
   border-radius: 8px;
   font-weight: bold;
+}
+
+
+.section-gap{
+  margin: 50px 0;
+}
+.About-us h2{
+  color: black;
+}
+
+section.About-us{
+  margin-top: 0;
+}
+.About-us p{
+  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+
+.thank-you-page h2 {
+  font-size: 32px;
+}
+
+.thank-you-page p.lead {
+  font-size: 18px;
 }

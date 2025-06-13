@@ -13,17 +13,23 @@
       <h2 class="text-center m-4"> تسجيل دخول</h2>
       <div class="row g-2">
         <div class="col-sm-12 col-md-6">
-          <form action="" class="p-3">
-
+          <form action="{{ route('Login') }}" method="POST" class="p-3">
+            @csrf
             <div class="m-2">
               <label for="">البريد الاكتروني</label>
-              <input type="text" placeholder="ادخل البريد الاكتروني الخاص بك">
+              <input type="text" name="email" placeholder="ادخل البريد الاكتروني الخاص بك">
+              @error('email')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
 
 
             <div class="m-2">
               <label for="">كلمة المرور</label>
-              <input type="password" placeholder="كلمة المرور">
+              <input type="password" name="password" placeholder="كلمة المرور">
+              @error('password')
+                <small class="text-danger">{{$message}}</small>
+              @enderror
             </div>
             <div class="d-flex justify-content-center mt-3">
               <input type="submit" style="width: fit-content; padding: 0 20px;" class="btn btn-primary" value="تسجيل دخول">
