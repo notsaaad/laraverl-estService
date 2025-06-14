@@ -5,7 +5,7 @@
       <hr>
       <ul class="menue">
 
-          <li class="menue-item">
+          {{-- <li class="menue-item">
               <a href="#" class="active">
                   <i class="fas fa-chart-bar"></i>
                   Dashboard
@@ -19,25 +19,24 @@
                   <li><a href="#">Seller Profile</a></li>
                   <li><a href="#">Revenue by Period</a></li>
               </ul>
-          </li>
-
+          </li> --}}
+          <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>Dashboard</a></li>
           <li class="menue-item">
 
               <a href="#">
                   <i class="fa-solid fa-boxes-stacked"></i>
-                  Products
+                  Service
                   <!-- <i class="arrow-dropdown fa-solid fa-sort-down"></i> -->
               </a>
               <ul class="submenu">
-                  <li><a href="#">Top Products</a></li>
-                  <li><a href="#">Products Grid</a></li>
-                  <li><a href="#">Products Management</a></li>
-                  <li><a href="#">Product Editor</a></li>
-                  <li><a href="#">Banners</a></li>
+                  <li><a href="#">Add</a></li>
+                  <li><a href="#">View</a></li>
+                  <li><a href="#">Add Category</a></li>
+                  <li><a href="#">View Categroies</a></li>
               </ul>
           </li>
 
-          <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>Orders</a></li>
+
           <li><a href="#"><i class="fa-solid fa-chart-simple"></i>Statistics</a></li>
           <li><a href="#"><i class="fa-regular fa-star"></i>Reviews</a></li>
           <li><a href="#"><i class="fa-solid fa-users"></i>Customers</a></li>
