@@ -12,7 +12,14 @@
                     </button>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('admin.users.edit', auth()->user()->id) }}" class="dropdown-item" type="button"><i class="fa-regular fa-user  text-primary"></i> My Account</a></li>
-                        <li><a href="{{ route('Logout') }}" class="dropdown-item" type="button"><i class="fa-solid fa-right-from-bracket text-danger"></i> Log out</a></li>
+                        <li>
+                          <form id="logout-form" action="{{ route('Logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" class="dropdown-item" type="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa-solid fa-right-from-bracket text-danger"></i> Log out</a>
+                        </a>
+                        </li>
                     </ul>
                     </div>
                 </div>

@@ -16,15 +16,34 @@ class DashboardMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if($user->role == 'customer' || $user->role == 'admin'){
-          return redirect()->route('MyAccountPage');
-        }
+   // لو المستخدم غير مسجل دخول
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
 
+    $user = auth()->user();
 
-        if($user->role == 'tech'){
-          return redirect()->route('TechMyAccount');
-        }
+    // تحديد المسار المتوقع للداشبورد حسب نوع المستخدم
+    $dashboardRoutes = [
+        'admin' => 'account',
+        'tech' => 'tech/account',
+        'customer' => 'account',
+    ];
+
+    $role = $user->role;
+    $expectedDashboard = $dashboardRoutes[$role] ?? null;
+
+    // لو مفيش داشبورد معرف للنوع ده، امنعه
+    if (!$expectedDashboard) {
+        abort(403, 'Unauthorized role.');
+    }
+
+    // لو هو بالفعل على الداشبورد الخاصة بيه، سيبه يكمل
+    if ($request->is($expectedDashboard) || $request->is($expectedDashboard . '/*')) {
         return $next($request);
+    }
+
+    // لو مش على الداشبورد بتاعته، redirect لها
+    return redirect($expectedDashboard);
     }
 }

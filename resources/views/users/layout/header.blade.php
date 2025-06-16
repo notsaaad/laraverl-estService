@@ -45,8 +45,15 @@
 
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('admin.users.edit', auth()->user()->id) }}" class="dropdown-item" type="button">حسابي <i class="fa-regular fa-user  text-primary"></i></a></li>
-                        <li><a href="{{ route('Logout') }}" class="dropdown-item" type="button">تسجيل الخروج  <i class="fa-solid fa-right-from-bracket text-danger"></i></a></li>
+                        <li><a href="{{ route('MyAccountPage') }}" class="dropdown-item" type="button">حسابي <i class="fa-regular fa-user  text-primary"></i></a></li>
+                        <li>
+                          <form id="logout-form" action="{{ route('Logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" class="dropdown-item" type="button" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            تسجيل الخروج <i class="fa-solid fa-right-from-bracket text-danger"></i> </a>
+                        </a>
+                        </li>
                     </ul>
                     </div>
                 </div>

@@ -43,7 +43,7 @@ class AuthController extends Controller
         return redirect()->route('HomePage')->with('success', 'تم تسجيل الدخول بنجاح');
     }
 
-    public function logout(Request $request)
+    public function logoutpost(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
