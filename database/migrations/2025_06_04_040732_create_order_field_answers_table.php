@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_details', function (Blueprint $table) {
+        Schema::create('order_field_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained()->onDelete('cascade');
-            $table->foreignId('orders_id')->constrained('orders')->onDelete('cascade');
-            $table->string('item');
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('field_id')->constrained('service_fields')->onDelete('cascade');
+            $table->text('value');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('order_field_answers');
     }
 };

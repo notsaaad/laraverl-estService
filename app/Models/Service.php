@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Order;
 use App\Models\Category;
-use App\Models\OrderDetail;
+use App\Models\ServiceField;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,8 +22,9 @@ class Service extends Model
     public function orders(): HasMany {
         return $this->hasMany(Order::class);
     }
-
-    public function orderDetails(): HasMany {
-        return $this->hasMany(OrderDetail::class);
+    public function fields()
+    {
+        return $this->hasMany(ServiceField::class);
     }
+
 }

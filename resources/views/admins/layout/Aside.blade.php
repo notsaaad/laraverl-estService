@@ -1,6 +1,6 @@
   <div class="sidebar">
       <div class="title">
-          <a href="#" class="title"><h2>EstService</h2></a>
+          <a href="{{ route('HomePage') }}" class="title"><h2>EstService</h2></a>
       </div>
       <hr>
       <ul class="menue">
@@ -20,7 +20,7 @@
                   <li><a href="#">Revenue by Period</a></li>
               </ul>
           </li> --}}
-          <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>Dashboard</a></li>
+          <li><a href="{{ route('admin.index') }}"><i class="fa-solid fa-cart-shopping"></i>Dashboard</a></li>
           <li class="menue-item">
 
               <a href="#">
@@ -29,30 +29,25 @@
                   <!-- <i class="arrow-dropdown fa-solid fa-sort-down"></i> -->
               </a>
               <ul class="submenu">
-                  <li><a href="#">Add</a></li>
-                  <li><a href="#">View</a></li>
-                  <li><a href="#">Add Category</a></li>
-                  <li><a href="#">View Categroies</a></li>
+                  <li><a href="{{ route('admin.service.add') }}">Add</a></li>
+                  <li><a href="{{ route('admin.service.view') }}">View</a></li>
+                  <li><a href="{{ route('admin.service.AddCategory') }}">Add Category</a></li>
+                  <li><a href="{{ route('admin.service.viewCategory') }}">View Categroies</a></li>
               </ul>
           </li>
-
-
-          <li><a href="#"><i class="fa-solid fa-chart-simple"></i>Statistics</a></li>
-          <li><a href="#"><i class="fa-regular fa-star"></i>Reviews</a></li>
-          <li><a href="#"><i class="fa-solid fa-users"></i>Customers</a></li>
-          <li><a href="#"><i class="fa-regular fa-credit-card"></i>Transactions</a></li>
 
           <li class="menue-item">
 
-              <a href="#" >
-                  <i class="fa-solid fa-gear"></i>
-                  settings
+              <a href="#">
+                  <i class="fa-solid fa-user"></i>
+                  Users
                   <!-- <i class="arrow-dropdown fa-solid fa-sort-down"></i> -->
               </a>
               <ul class="submenu">
-                      <li><a href="#">general settings </a></li>
-                      <li><a href="#">connected apps</a></li>
+                  <li><a href="{{ route('admin.user.add') }}">Add</a></li>
+                  <li><a href="{{ route('admin.users.view') }}">View</a></li>
               </ul>
           </li>
+
       </ul>
   </div>

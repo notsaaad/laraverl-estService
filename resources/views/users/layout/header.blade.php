@@ -34,11 +34,22 @@
 
           <div class="Actionsbtn">
             @guest
-              <a href="{{ route('signupPage') }}" class="btn btn-primary">انشاء حساب</a>
+              {{-- <a href="{{ route('signupPage') }}" class="btn btn-primary">انشاء حساب</a> --}}
               <a href="{{ route('loginPage') }}" class="btn btn-outline-primary">تسجيل الدخول</a>
             @endguest
             @auth
-              <a href="#">مرحبا {{auth()->user()->name}} الذهاب الي حسابي</a>
+                <div class="profile-container">
+                    <div class="btn-group">
+                    <button type="button" class="profile_avatar" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img width="80" src="{{ auth()->user() && auth()->user()->image ? URL::asset(UsersImagePath() . auth()->user()->image) : default_image() }}" alt="Profile">
+
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('admin.users.edit', auth()->user()->id) }}" class="dropdown-item" type="button">حسابي <i class="fa-regular fa-user  text-primary"></i></a></li>
+                        <li><a href="{{ route('Logout') }}" class="dropdown-item" type="button">تسجيل الخروج  <i class="fa-solid fa-right-from-bracket text-danger"></i></a></li>
+                    </ul>
+                    </div>
+                </div>
             @endauth
           </div>
         </header>

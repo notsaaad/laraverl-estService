@@ -26,3 +26,26 @@ $(document).ready(function () {
     })
   })
 });
+
+
+$(document).ready(function () {
+  $('.select2').select2(
+    {
+      width: 'resolve'
+    }
+  );
+});
+
+
+
+document.querySelector('.search-box').addEventListener('input', function () {
+    const searchText = this.value.toLowerCase();
+    const rows = document.querySelectorAll('tbody tr');
+
+    rows.forEach(row => {
+        const rowText = Array.from(row.querySelectorAll('td'))
+          .map(cell => cell.textContent.toLowerCase())
+          .join(' ');
+        row.style.display = rowText.includes(searchText) ? '' : 'none';
+    });
+});

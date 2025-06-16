@@ -60,7 +60,7 @@ body {
 }
 
 
-form{
+form:not(.action){
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -70,6 +70,12 @@ form{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: #f7f7f7;
   padding: 20px;
+}
+
+.actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 form .row{
@@ -98,7 +104,17 @@ form .row{
   height: 40px;
   padding: 15px;
 }
+.select2-container .select2-selection--single{
+  height: 40px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+}
 
+
+.input-div.file input{
+  height: auto;
+}
 .input-div select{
   padding: 5px;
 }
@@ -429,4 +445,13 @@ table tr:hover {
     align-items: center;
     border-bottom: 2px solid var(--color-border);
     margin-bottom: 20px;
+}
+
+.imgEdit{
+    width: 100px;
+}
+
+
+#dynamic-fields-wrapper{
+  width: 100%;
 }

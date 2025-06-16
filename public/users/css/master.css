@@ -247,3 +247,19 @@ section.About-us{
 .thank-you-page p.lead {
   font-size: 18px;
 }
+
+
+header .profile_avatar {
+  width: 60px;
+  height: 60px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+header .profile_avatar   img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: gray;
+}

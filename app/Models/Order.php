@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Service;
-use App\Models\OrderDetail;
+use App\Models\OrderFieldAnswer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,8 +22,9 @@ class Order extends Model
     public function service(): BelongsTo {
         return $this->belongsTo(Service::class);
     }
-
-    public function details(): HasMany {
-        return $this->hasMany(OrderDetail::class, 'orders_id');
+    public function answers()
+    {
+        return $this->hasMany(OrderFieldAnswer::class);
     }
+
 }

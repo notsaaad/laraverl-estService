@@ -34,6 +34,7 @@ Route::controller(AuthController::class)->group(function(){
   Route::post('logout', 'logoutpost')->name('Logout');
   Route::get('account', 'account')->name('MyAccountPage')->middleware(['auth', 'dashboard']);
 
+
   // ===================================== Start Tech ==========================
     Route::prefix('tech')->group(function(){
       Route::get('account', 'Tech_my_account')->name('TechMyAccount')->middleware(['auth','dashboard']);
