@@ -20,13 +20,12 @@
                   <li><a href="#">Revenue by Period</a></li>
               </ul>
           </li> --}}
-          <li><a href="{{ route('admin.index') }}"><i class="fa-solid fa-cart-shopping"></i>Dashboard</a></li>
+          <li><a href="{{ route('admin.index') }}"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
           <li class="menue-item">
 
               <a href="#">
                   <i class="fa-solid fa-boxes-stacked"></i>
                   Service
-                  <!-- <i class="arrow-dropdown fa-solid fa-sort-down"></i> -->
               </a>
               <ul class="submenu">
                   <li><a href="{{ route('admin.service.add') }}">Add</a></li>
@@ -41,11 +40,22 @@
               <a href="#">
                   <i class="fa-solid fa-user"></i>
                   Users
-                  <!-- <i class="arrow-dropdown fa-solid fa-sort-down"></i> -->
               </a>
               <ul class="submenu">
                   <li><a href="{{ route('admin.user.add') }}">Add</a></li>
                   <li><a href="{{ route('admin.users.view') }}">View</a></li>
+              </ul>
+          </li>
+
+          <li class="menue-item">
+
+              <a href="#">
+                  <i class="fa-solid fa-briefcase"></i>
+                  Jobs
+              </a>
+              <ul class="submenu">
+                  <li><a href="{{ route('admin.job.add') }}">Add</a></li>
+                  <li><a href="{{ route('admin.jobs.view') }}">View</a></li>
               </ul>
           </li>
 

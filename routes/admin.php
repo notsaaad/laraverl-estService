@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\JobsController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\DashboardController;
@@ -47,4 +48,13 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::get('edit/{user}', 'edit')->name('admin.users.edit');
     Route::post('editpost/{user}', 'editpost')->name('admin.users.postEdit');
     Route::post('delete', 'delete')->name('admin.users.delete');
+  });
+
+  Route::controller(JobsController::class)->prefix('jobs')->group(function(){
+    Route::get('/add', 'add')->name('admin.job.add');
+    Route::post('/add', 'postjob')->name('admin.job.postadd');
+    Route::get('/view', 'view')->name('admin.jobs.view');
+    Route::get('edit/{job}', 'edit')->name('admin.jobs.edit');
+    Route::post('editpost/{job}', 'editpost')->name('admin.jobs.postEdit');
+    Route::post('delete', 'delete')->name('admin.jobs.delete');
   });

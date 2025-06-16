@@ -50,11 +50,21 @@
 
                     <div class="input-div col-sm-12 col-md-6">
                         <label for="role">role <span>(required)</span></label>
-                        <select class="select2" name="role" >
+                        <select class="select2" name="role" id="role" >
                             <option value="">-- User Role --</option>
                             <option value="customer">Customer</option>
                             <option value="tech">Technical</option>
                             <option value="admin">Admin</option>
+                        </select>
+                    </div>
+
+                    <div class="input-div col-sm-12 col-md-6" id="job-container" style="display: none">
+                        <label for="job_id">job</label>
+                        <select class="select2" name="job_id" id="job_id" >
+                            <option value="">-- Technical job --</option>
+                            @foreach ($jobs as $job)
+                              <option value="{{$job->id}}">{{$job->name}}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -103,4 +113,25 @@
             </div>
         </div>
 
+@endsection
+
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            function toggleJobField() {
+                if ($('#role').val() === 'tech') {
+                    $('#job-container').slideDown();
+                } else {
+                    $('#job-container').slideUp();
+                    $('#job_id').val(null).trigger('change');
+                }
+            }
+
+
+            $('#role').on('change', toggleJobField);
+
+            toggleJobField();
+        });
+    </script>
 @endsection

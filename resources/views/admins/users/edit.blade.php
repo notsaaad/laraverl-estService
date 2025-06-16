@@ -44,14 +44,22 @@
 
                     <div class="input-div col-sm-12 col-md-6">
                         <label for="role">role <span>(required)</span></label>
-                        <select class="select2" name="role">
+                        <select class="select2" name="role" id="role">
                             <option value="">-- User Role --</option>
                             <option value="customer" {{ $user->role === 'customer' ? 'selected' : '' }}>Customer</option>
                             <option value="tech" {{ $user->role === 'tech' ? 'selected' : '' }}>Technical</option>
                             <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                         </select>
                     </div>
-
+                    <div class="input-div col-sm-12 col-md-6" id="job-container" style="display: none">
+                        <label for="job_id">job</label>
+                        <select class="select2" name="job_id" id="job_id" >
+                            <option value="">-- Technical job --</option>
+                            @foreach ($jobs as $job)
+                              <option {{ old('job_id', isset($job) ? $job->id : '') == $job->id ? 'selected' : '' }} value="{{ $job->id }}">{{$job->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -102,4 +110,25 @@
             </div>
         </div>
 
+@endsection
+
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            function toggleJobField() {
+                if ($('#role').val() === 'tech') {
+                    $('#job-container').slideDown();
+                } else {
+                    $('#job-container').slideUp();
+                    $('#job_id').val(null).trigger('change');
+                }
+            }
+
+
+            $('#role').on('change', toggleJobField);
+
+            toggleJobField();
+        });
+    </script>
 @endsection

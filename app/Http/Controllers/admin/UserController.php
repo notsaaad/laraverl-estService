@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,7 +11,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function add(){
-      return view('admins.users.add');
+      $jobs = Job::get();
+      return view('admins.users.add', get_defined_vars());
     }
 
 
@@ -25,6 +27,7 @@ class UserController extends Controller
         'role'     => 'required',
         'phone'    => 'required',
         'gender'   => 'required',
+        'job_id' => 'required_if:role,tech|exists:jobs,id',
       ]);
 
       $data['password'] = Hash::make($request->password);
@@ -49,6 +52,7 @@ class UserController extends Controller
     }
 
     function edit(User $user){
+      $jobs = Job::get();
       return view('admins.users.edit', get_defined_vars());
     }
 
@@ -61,6 +65,7 @@ class UserController extends Controller
         'role'     => 'required',
         'phone'    => 'required',
         'gender'   => 'required',
+        'job_id'   => 'required_if:role,tech|exists:jobs,id',
       ]);
 
       if($request->hasFile('image')){

@@ -27,4 +27,20 @@ class Order extends Model
         return $this->hasMany(OrderFieldAnswer::class);
     }
 
-}
+    public function getAnswers(){
+      return $this->answers()->with('field')->get()->map(function ($answer) {
+          return [
+              'label' => $answer->field->label,
+              'value' => $answer->field->type === 'checkbox' && is_string($answer->value)
+                  ? implode(', ', json_decode($answer->value, true))
+                  : $answer->value,
+          ];
+      });
+    }
+
+
+    public function tech()
+    {
+        return $this->belongsTo(User::class, 'tech_id');
+    }
+  }
