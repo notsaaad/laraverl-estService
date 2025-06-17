@@ -26,6 +26,7 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::get('viewCategory', 'viewCategory')->name('admin.service.viewCategory');
     Route::post('deletecategory', 'deleteCateogy')->name('admin.services.deleteCategory');
     Route::post('delete', 'delete')->name('admin.services.delete');
+
   });
 
 
@@ -34,6 +35,7 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::post('store/{service}', 'store')->name('admin.service.addFieldPost');
     Route::get('edit/{service}', 'edit')->name('admin.service.editFieldPost');
     Route::put('update/{service}', 'update')->name('admin.service.updateFieldPost');
+    Route::post('deletefield', 'deletefield')->name('admin.services.deletefield');
   });
 
   Route::controller(AuthController::class)->group(function(){

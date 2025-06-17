@@ -45,10 +45,14 @@
             </div>
 
             <div class="text-end mt-2">
-              {{-- <form action=""></form> --}}
-              <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeField({{ $index }})">
-                <i class="fa fa-trash"></i>
-              </button>
+              <form class="action" method="post" action="{{ route('admin.services.deletefield') }}">
+                @csrf
+                <input type="hidden" name="service_id" value="{{  $service->id }}">
+                <input type="hidden" name="id" value="{{  $field->id }}">
+                <button class="btn btn-sm btn-outline-danger">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </form>
             </div>
           </div>
         @endforeach

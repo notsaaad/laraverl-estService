@@ -51,4 +51,14 @@ class ServiceFieldController extends Controller
         return redirect()->route('admin.service.editFieldPost', $service->id)->with('success', 'تم حفظ التعديلات بنجاح');
     }
 
+
+    function deletefield(Request $request){
+      $field_id = $request->id;
+      $service_id = $request->service_id;
+      $field    = ServiceField::findOrFail($field_id);
+      $field->delete();
+
+      return redirect()->route('admin.service.editFieldPost', $service_id)->with('success', 'تم مسح الحقل بنجاح');
+    }
+
 }
