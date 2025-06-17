@@ -36,7 +36,7 @@
             </div>
           </form>
 
-          <p  class="mt-4 text-center">ليس لديك حساب ؟ <a href="{{ route('signupPage') }}">انشاء حساب</a></p>
+          {{-- <p  class="mt-4 text-center">ليس لديك حساب ؟ <a href="{{ route('signupPage') }}">انشاء حساب</a></p> --}}
         </div>
         <div class="col-sm-12 col-md-6  d-md-block d-sm-none">
           <img src="{{ URL::asset('public/users/images/login.png') }}" class="w-100 h-100" alt="Login">

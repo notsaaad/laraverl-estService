@@ -54,7 +54,9 @@ class AuthController extends Controller
 
 
     function account(){
-      return view('users.Auth.user.dashbord');
+      $user = auth()->user();
+      $orders = $user->orders;
+      return view('users.Auth.user.dashbord', get_defined_vars());
     }
 
     function Tech_my_account(){

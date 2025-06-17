@@ -17,7 +17,7 @@
           </div>
 
 
-          <div class="border rounded p-4">
+          <div class="border rounded p-4" id="orders">
             <h5 class="mb-3 fw-bold text-primary">طلباتي السابقة</h5>
             <div class="table-responsive">
               <table class="table table-bordered text-center align-middle">
@@ -31,20 +31,27 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @forelse ( $orders as $order )
                   <tr>
-                    <td>254</td>
-                    <td>تنظيف شقة 170م</td>
-                    <td>2025-06-02</td>
-                    <td><span class="badge bg-success">مكتمل</span></td>
-                    <td><a href="#" class="btn btn-sm btn-outline-primary">عرض</a></td>
+                    <td>{{$order->id}}</td>
+                    <td>{{$order->service->name}}</td>
+                    <td>{{$order->created_at->format('Y-m-d')}}</td>
+                    <td>
+                      @if ($order->status == "complete")
+                        <span class="badge bg-success">مكتمل</span>
+                      @elseif($order->status == "pending")
+                        <span class="badge bg-warning text-dark">قيد التنفيذ</span>
+                      @elseif($order->status == "fail")
+                        <span class="badge bg-danger">ملغي</span>
+                      @endif
+                    </td>
+                    <td><a href="{{ route('ThankYouPage', $order->id) }}" class="btn btn-sm btn-outline-primary">عرض</a></td>
                   </tr>
+                  @empty
                   <tr>
-                    <td>255</td>
-                    <td>نقل أثاث</td>
-                    <td>2025-06-03</td>
-                    <td><span class="badge bg-warning text-dark">قيد التنفيذ</span></td>
-                    <td><a href="#" class="btn btn-sm btn-outline-primary">عرض</a></td>
+                    <td colspan="4">لا يوجد طلبات</td>
                   </tr>
+                  @endforelse
                 </tbody>
               </table>
             </div>

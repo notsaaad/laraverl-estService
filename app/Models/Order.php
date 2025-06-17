@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'total_price', 'user_id', 'service_id', 'description', 'status'];
+    protected $fillable = ['name', 'total_price', 'user_id', 'service_id', 'description', 'status', 'phone', 'email', 'address', 'date'];
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);

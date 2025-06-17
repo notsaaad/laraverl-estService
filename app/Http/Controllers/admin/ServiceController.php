@@ -27,7 +27,7 @@ class ServiceController extends Controller
           'category_id' => 'exists:categories,id',
           'image'       => 'sometimes|nullable|mimes:png,jpg,jpeg,webp|max:2048',
           'description' => 'required',
-          'active'      => 'required',
+          'active'      => 'nullable',
       ]);
 
       if($request->hasFile('image')){
@@ -47,7 +47,7 @@ class ServiceController extends Controller
           'category_id' => 'exists:categories,id',
           'image'       => 'sometimes|nullable|mimes:png,jpg,jpeg,webp|max:2048',
           'description' => 'required',
-          'active'      => 'required',
+          'active'      => 'nullable',
       ]);
 
       if($request->hasFile('image')){

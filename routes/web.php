@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\user\AuthController;
 use App\Http\Controllers\user\HomeController;
+use App\Http\Controllers\user\OrderController;
 use App\Http\Controllers\user\othersController;
+use App\Http\Controllers\user\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,19 @@ use App\Http\Controllers\user\othersController;
 
 Route::controller(HomeController::class)->group(function(){
   Route::get('/',  'index')->name('HomePage');
-  Route::get('/service', 'service')->name('servicePage');
+  Route::get('/service/{service}', 'service')->name('Single_Service');
   Route::get('/services', 'services')->name('servicesPage');
+  Route::get('/services/search', 'search')->name('services.search');
+
 });
+
+
+
+  Route::controller(OrderController::class)->prefix('/orders')->group(function(){
+    Route::get('/checkout/{service}',  'checkout')->name('CheckoutPage')->middleware('auth');
+    Route::post('/checkout/store/{service}',  'store')->name('Checkout_StorePage');
+    Route::get('/thankyou/{order}', 'thankyou')->name('ThankYouPage');
+  });
 
 
 
@@ -43,6 +55,10 @@ Route::controller(AuthController::class)->group(function(){
 });
 
 
+Route::controller(CategoryController::class)->group(function(){
+  Route::get('/categoies', 'index')->name('CategoryPage');
+  Route::get('/categoies/{cat}', 'CatPage')->name('SingleCategoryPage');
+});
 
 
 Route::controller(othersController::Class)->group(function(){

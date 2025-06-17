@@ -26,6 +26,7 @@
           <ul class="menu">
             <li><a href="{{ route('HomePage') }}" class="{{ Route::is('HomePage') ? 'active' : '' }}" >الرئيسة</a></li>
             <li><a href="{{ route('servicesPage') }}" class="{{ Route::is('servicesPage') ? 'active' : '' }}">الخدمات</a></li>
+            <li><a href="{{ route('CategoryPage') }}" class="{{ Route::is('CategoryPage') ? 'active' : '' }}">التصنيفات</a></li>
             {{-- <li><a href="#" class="{{ Route::is('servicesPage') ? 'active' : '' }}">كل العروض</a></li> --}}
             <li><a href="{{ route('aboutUsPage') }}" class="{{ Route::is('aboutUsPage') ? 'active' : '' }}">من نحن</a></li>
             <li><a href="{{ route('contactUsPage') }}" class="{{ Route::is('contactUsPage') ? 'active' : '' }}">اتصل بنا</a></li>
@@ -58,7 +59,13 @@
                     </div>
                 </div>
             @endauth
+
           </div>
+          @auth
+            @if (auth()->user()->role == "admin")
+              <a class="btn btn-primary" href="{{ route('admin.index') }}">الادمن</a>
+            @endif
+          @endauth
         </header>
       </div>
     </div>

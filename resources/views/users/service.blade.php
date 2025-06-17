@@ -14,14 +14,18 @@
 
       <div class="row g-2 m-5 mb-3">
         <div class="col-sm-12 col-md-8">
-          <h2 class="black fw-bold">تنظيف المنزل للمرة الواحدة - حتي 170 م</h2>
-          <p class="serv-price"><span class="fw-bold">345 </span>جنية</p>
-          خدمة النظافة المنزلية المعتادة التى تحافظ على منزلك نظيفا طوال الوقت ، مقدمه
-          من مجموعة من العمال والعاملات المتعاقد معهم وتدريبهم لضمان الجودة والأمانة وتقديم خدمة نظافة مضمونة تتم بإحترافية ، نظافة الشقق و الفيلات والمكاتب
+          <h2 class="black fw-bold">{{$service->name}}</h2>
+          <p class="serv-price"><span class="fw-bold">{{ $service->price }} </span>جنية</p>
+          {{ $service->description }}
         </div>
         <div class="col-sm-12 col-md-4">
-          <button class="btn btn-primary">اطلب الان</button>
-          <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" class="w-100 h-100 mt-3 rounded" alt="service">
+          <a href="{{ route('CheckoutPage', $service->id) }}" class="btn btn-primary">اطلب الان</a>
+
+            @if(!empty($service->image))
+              <img src="{{ URL::asset(ServiceImagePath().$service->image) }}" alt="{{ $service->name }}" class="w-100 h-100 mt-3 rounded">
+            @else
+              <img src="{{ URL::asset(default_service_image()) }}" alt="{{ $service->name }}" class="w-100 h-100 mt-3 rounded">
+            @endif
         </div>
       </div>
 
