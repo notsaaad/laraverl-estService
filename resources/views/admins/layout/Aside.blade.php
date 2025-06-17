@@ -59,5 +59,17 @@
               </ul>
           </li>
 
+          <li class="menue-item">
+
+              <a href="#">
+                  <i class="fa-solid fa-box-archive"></i>
+                  Orders
+              </a>
+              <ul class="submenu">
+                  <li><a href="{{ route('admin.order.add') }}">Add</a></li>
+                  <li><a href="{{ route('admin.order.index') }}">View</a></li>
+              </ul>
+          </li>
+
       </ul>
   </div>

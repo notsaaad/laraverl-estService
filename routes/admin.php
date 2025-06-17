@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\JobsController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\OrdersController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ServiceFieldController;
@@ -50,6 +51,8 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::post('delete', 'delete')->name('admin.users.delete');
   });
 
+
+
   Route::controller(JobsController::class)->prefix('jobs')->group(function(){
     Route::get('/add', 'add')->name('admin.job.add');
     Route::post('/add', 'postjob')->name('admin.job.postadd');
@@ -57,4 +60,12 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::get('edit/{job}', 'edit')->name('admin.jobs.edit');
     Route::post('editpost/{job}', 'editpost')->name('admin.jobs.postEdit');
     Route::post('delete', 'delete')->name('admin.jobs.delete');
+  });
+
+
+  Route::controller(OrdersController::class)->prefix('orders')->group(function(){
+    Route::get('/', 'index')->name('admin.order.index');
+    Route::get('/add', 'add')->name('admin.order.add');
+    Route::get('/service-fields/{service}', 'getServiceFields')->name('admin.order.serviceFields');
+    Route::post('/store', 'store')->name('admin.order.store');
   });

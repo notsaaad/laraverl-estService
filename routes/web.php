@@ -45,11 +45,14 @@ Route::controller(AuthController::class)->group(function(){
   Route::post('login', 'loginpost')->name('Login')->middleware('guest');
   Route::post('logout', 'logoutpost')->name('Logout');
   Route::get('account', 'account')->name('MyAccountPage')->middleware(['auth', 'dashboard']);
+  Route::get('/account/edit', 'edit')->name('myAccount.Edit');
+  Route::post('/user-update', 'update')->name('myAccount.update');
 
 
   // ===================================== Start Tech ==========================
-    Route::prefix('tech')->group(function(){
-      Route::get('account', 'Tech_my_account')->name('TechMyAccount')->middleware(['auth','dashboard']);
+    Route::prefix('techAccount')->group(function(){
+      Route::get('/', 'Tech_my_account')->name('TechMyAccount')->middleware(['auth','dashboard']);
+      Route::get('/edit', 'edit')->name('TechmyAccount.Edit');
     });
   // ===================================== End Tech ============================
 });
@@ -64,5 +67,6 @@ Route::controller(CategoryController::class)->group(function(){
 Route::controller(othersController::Class)->group(function(){
   Route::get('contact-us', 'contactUS')->name('contactUsPage');
   Route::get('About-us', 'AboutUs')->name('aboutUsPage');
+  Route::get('/servicefields/{service}', 'getServiceFields');
 });
 

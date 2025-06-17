@@ -62,4 +62,20 @@ class AuthController extends Controller
     function Tech_my_account(){
       return view('users.Auth.tech.dashbord');
     }
+    function edit(){
+      return view('users.Auth.user.edit');
+    }
+
+    function update(Request $request){
+      $user = auth()->user();
+      $data = $request->validate([
+        'name'        => 'required|string',
+        'email'       => 'required|unique:users,email,'.$user->id,
+        'phone'       => 'required',
+        'address'     => 'required',
+      ]);
+      $user->update($data);
+
+      return redirect()->route('MyAccountPage');
+    }
 }

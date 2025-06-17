@@ -13,7 +13,7 @@
             <p><strong>رقم الجوال:</strong> 01001234567</p>
             <p><strong>العنوان:</strong> {{auth()->user()->address ?? ''}}</p>
             <p><strong>تاريخ التسجيل:</strong>{{auth()->user()->created_at->format('y-m-d') ?? ' '}} </p>
-            <a href="#" class="btn btn-outline-primary mt-3">تعديل البيانات</a>
+            <a href="{{ route('myAccount.Edit') }}" class="btn btn-outline-primary mt-3">تعديل البيانات</a>
           </div>
 
 
