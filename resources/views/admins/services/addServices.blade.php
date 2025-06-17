@@ -12,7 +12,7 @@
                 <h2 >Add new Service</h2>
                 <p>Add Your new Serive Dynamic.</p>
 
-            <form action="{{ route('admin.service.insertData') }}"  method="POST">
+            <form action="{{ route('admin.service.insertData') }}"  method="POST"  enctype="multipart/form-data">
               @csrf
                 <div class="row">
                     <div class="input-div col-sm-12 col-md-6">

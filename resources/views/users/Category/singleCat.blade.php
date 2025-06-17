@@ -17,11 +17,13 @@
         @forelse ( $services as $service )
         <div class="col-sm-12 col-md-6 col-lg-3">
           <div class="h-100 p-2 shadow">
-            @if(!empty($service->image))
-              <img src="{{ URL::asset(ServiceImagePath().$service->image) }}" alt="{{ $service->name }}" class="img-fluid">
-            @else
-              <img src="{{ URL::asset(default_service_image()) }}" alt="{{ $service->name }}" class="img-fluid">
-            @endif
+            <a href="{{ route('Single_Service', $service->id) }}">
+              @if(!empty($service->image))
+                <img src="{{ URL::asset(ServiceImagePath().$service->image) }}" alt="{{ $service->name }}" class="img-fluid">
+              @else
+                <img src="{{ URL::asset(default_service_image()) }}" alt="{{ $service->name }}" class="img-fluid">
+              @endif
+            </a>
             <div class="serv-info">
               <div class="fw-bold serv-title p-2">{{$service->name}}</div>
             </div>

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\user;
 
 use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
     function index(){
-      return view('users.Home');
+      $categroies =  Category::limit(4)->get();
+      $services   =  Service::limit(4)->get();
+      return view('users.Home', get_defined_vars());
     }
 
     function service(Service $service){

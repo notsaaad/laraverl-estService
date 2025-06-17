@@ -45,6 +45,7 @@
             </div>
 
             <div class="text-end mt-2">
+              {{-- <form action=""></form> --}}
               <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeField({{ $index }})">
                 <i class="fa fa-trash"></i>
               </button>

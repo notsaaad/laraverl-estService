@@ -52,43 +52,33 @@
         <div class="container">
           <div class="section-header">
             <span class="section-title">أكثر الخدمات طلباً</span>
-            <a href="{{ route('servicesPage') }}">عرض جميع فئات الخدمات  <i class="fa-solid fa-left-long"></i></a>
+            <a href="{{ route('CategoryPage') }}">عرض جميع فئات الخدمات  <i class="fa-solid fa-left-long"></i></a>
           </div>
 
           <div class="container py-4">
             <div class="row g-3">
+              @forelse ( $categroies as  $cat)
               <div class="col-12 col-sm-6 col-lg-3 single-service">
                 <div class="h-100 p-2">
-                  <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" alt="خدمات الصيانة والإصلاح" class="img-fluid">
+                  <a href="{{ route('SingleCategoryPage', $cat->id) }}">
+                    @if(!empty($cat->image))
+                      <img src="{{ URL::asset(CategoriesImagePath().$cat->image) }}" alt="{{ $cat->name }}" class="img-fluid">
+                    @else
+                      <img src="{{ URL::asset(default_category_image()) }}" alt="{{ $cat->name }}" class="img-fluid">
+                    @endif
+                  </a>
                   <div class="serv-info">
-                    <div class="fw-bold serv-title">خدمات الصيانة والإصلاح</div>
+                    <div class="fw-bold serv-title">{{$cat->name}}</div>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6 col-lg-3 single-service">
-                <div class="h-100 p-2">
-                  <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" alt="خدمة نقل الأثاث" class="img-fluid">
-                  <div class="serv-info">
-                    <div class="fw-bold serv-title">خدمة نقل الأثاث</div>
-                  </div>
-                </div>
+              @empty
+              <div class="col">
+                <h2 class="text-ceneter">لا يوحد فئات خدمات</h2>
               </div>
-              <div class="col-12 col-sm-6 col-lg-3 single-service">
-                <div class="h-100 p-2">
-                  <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" alt="نظافة منزلية" class="img-fluid">
-                    <div class="serv-info">
-                      <div class="fw-bold serv-title">نظافة منزلية</div>
-                    </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-3 single-service">
-                <div class="h-100 p-2">
-                  <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" alt="خدمات التوصيل" class="img-fluid">
-                    <div class="serv-info">
-                      <div class="fw-bold serv-title">خدمات التوصيل</div>
-                    </div>
-                </div>
-              </div>
+              @endforelse
+
+
             </div>
           </div>
 
@@ -107,50 +97,28 @@
 
       <div class="container py-4">
         <div class="row g-3">
+          @forelse ($services as $service )
           <div class="col-12 col-sm-6 col-lg-3 ">
             <div class="h-100  single-service shadow">
-              <img src="{{ URL::asset('public/users/images/services/serv3.png') }}" alt="خدمات الصيانة والإصلاح" class="img-fluid">
+              <a href="{{ route('Single_Service', $service->id) }}">
+              @if(!empty($service->image))
+                <img src="{{ URL::asset(ServiceImagePath().$service->image) }}" alt="{{ $service->name }}" class="img-fluid">
+              @else
+                <img src="{{ URL::asset(default_service_image()) }}" alt="{{ $service->name }}" class="img-fluid">
+              @endif
+              </a>
               <div class="serv-info">
-                <div class="fw-bold serv-title">خدمات الصيانة والإصلاح</div>
-                <span class="serv-price"><span class="fw-bold">300 </span>جنية</span>
-                <span class="serv-category opacity-75">قسم النظافة المنزلية : </span>
-                <span class="serv-des">احتفظ بنظافة منزلك مع التنظيف الدورى يشمل التنظيف 7 وحدات. </span>
+                <div class="fw-bold serv-title">{{$service->name}}</div>
+                <span class="serv-price"><span class="fw-bold">{{$service->price}} </span>جنية</span>
+                <a class="text-dark" href="{{ route('SingleCategoryPage', $service->category->id) }}"><span class="serv-category opacity-75"> قسم: <span class="text-primary">{{$service->category->name}}</span> </span></a>
               </div>
             </div>
           </div>
-          <div class="col-12 col-sm-6 col-lg-3 ">
-            <div class="h-100  single-service shadow">
-              <img src="{{ URL::asset('public/users/images/services/serv4.png') }}" alt="خدمة نقل الأثاث" class="img-fluid">
-              <div class="serv-info">
-                <div class="fw-bold serv-title">خدمة نقل الأثاث</div>
-                <span class="serv-price"><span class="fw-bold">300 </span>جنية</span>
-                <span class="serv-category opacity-75">قسم النظافة المنزلية : </span>
-                <div class="serv-des">احتفظ بنظافة منزلك مع التنظيف الدورى يشمل التنظيف 7 وحدات. </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-3 ">
-            <div class="h-100  single-service shadow">
-              <img src="{{ URL::asset('public/users/images/services/serv2.png') }}" alt="نظافة منزلية" class="img-fluid">
-                <div class="serv-info">
-                  <div class="fw-bold serv-title">نظافة منزلية</div>
-                  <span class="serv-price"><span class="fw-bold">300 </span>جنية</span>
-                  <span class="serv-category opacity-75">قسم النظافة المنزلية : </span>
-                  <div class="serv-des">احتفظ بنظافة منزلك مع التنظيف الدورى يشمل التنظيف 7 وحدات. </div>
-                </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-3 ">
-            <div class="h-100  single-service shadow">
-              <img src="{{ URL::asset('public/users/images/services/serv1.png') }}" alt="خدمات التوصيل" class="img-fluid">
-              <div class="serv-info">
-                <div class="fw-bold serv-title">خدمات التوصيل</div>
-                <span class="serv-price"><span class="fw-bold">300 </span>جنية</span>
-                <span class="serv-category opacity-75">قسم النظافة المنزلية : </span>
-                <div class="serv-des">احتفظ بنظافة منزلك مع التنظيف الدورى يشمل التنظيف 7 وحدات. </div>
-              </div>
-            </div>
-          </div>
+          @empty
+          <h2 class="text-center">لا يوجد خدمات</h2>
+          @endforelse
+
+
         </div>
       </div>
     </section>
