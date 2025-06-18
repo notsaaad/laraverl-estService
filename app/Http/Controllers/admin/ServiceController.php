@@ -121,7 +121,7 @@ class ServiceController extends Controller
     }
 
 
-    function delete(){
+    function delete(Request $request){
       $service_id = $request->id;
       $service    = Service::findOrFail($service_id);
       $service->delete();
