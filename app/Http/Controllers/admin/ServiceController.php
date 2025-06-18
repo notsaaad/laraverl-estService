@@ -121,4 +121,13 @@ class ServiceController extends Controller
     }
 
 
+    function delete(){
+      $service_id = $request->id;
+      $service    = Service::findOrFail($service_id);
+      $service->delete();
+
+      return redirect()->route('admin.service.view')->with('success', 'تم مسح الخدمة بنجاح');
+    }
+
+
 }
