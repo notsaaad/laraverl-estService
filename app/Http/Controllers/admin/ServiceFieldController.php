@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class ServiceFieldController extends Controller
 {
     public function create(Service $service){
-      return view('admins.serviceFields.add', get_defined_vars());
+    return view('admins.serviceFields.add', get_defined_vars());
     }
     public function store(Request $request, Service $service){
         $request->validate([
