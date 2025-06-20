@@ -55,8 +55,8 @@
                             <td> <a href="{{ route('ThankYouPage', $order->id) }}" class="btn btn-primary">View</a> </td>
                             <td>
                               <div class="actions">
-                                <a class="btn btn-primary" href="{{ route('admin.users.edit', $order->id) }}">تعديل</a>
-                                <form class="action" action="{{ route('admin.users.delete') }}" method="POST">
+                                <a class="btn btn-primary" href="{{ route('admin.orders.edit', $order->id) }}">تعديل</a>
+                                <form class="action" action="{{ route('admin.orders.delete') }}" method="POST">
                                   @csrf
                                   <input type="hidden" name="id" value="{{ $order->id }}">
                                   <button class="btn btn-outline-danger">مسح</button>

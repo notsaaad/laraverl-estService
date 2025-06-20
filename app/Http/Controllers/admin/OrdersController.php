@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\OrderFieldAnswer;
 use App\Http\Controllers\Controller;
 
 class OrdersController extends Controller
@@ -66,5 +67,90 @@ class OrdersController extends Controller
 
     return redirect()->route('admin.order.index')->with('success', 'تم إنشاء الطلب بنجاح');
 }
+
+
+  public function edit(Order $order){
+
+    $users = User::all();
+    $services = Service::all();
+    $techs    = User::where('role', 'tech')->get();
+    $fields = $order->service->fields ?? [];
+
+    return view('admins.orders.edit',get_defined_vars());
+}
+
+public function update(Request $request, Order $order){
+
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        'name'    => 'required',
+        'date'    => 'required',
+        'phone'   => 'required',
+        'name'    => 'required',
+    ]);
+
+    // return $request;
+
+    $order->update([
+        'user_id'     => $request->user_id,
+        'description' => $request->description,
+        'tech_id'     => $request->tech_id,
+        'date'        => $request->date,
+        'phone'       => $request->phone,
+        'name'        => $request->name,
+        'status'      => $request->status,
+    ]);
+
+    $answers = [];
+    $fields = $order->service->fields;
+
+    foreach ($fields as $field) {
+        $key = "field_{$field->id}";
+
+        if ($field->type === 'checkbox') {
+            $answers[$field->label] = $request->has($key) ? $request->input($key) : [];
+        } else {
+            $answers[$field->label] = $request->input($key);
+        }
+    }
+
+    $order->tech_id = $request->tech_id;
+    $order->save();
+
+
+ // حذف الإجابات القديمة
+    $order->answers()->delete();
+
+    // إدخال الإجابات الجديدة
+    $fields = $order->service->fields;
+
+    foreach ($fields as $field) {
+        $key = "field_{$field->id}";
+        $value = $request->input($key);
+
+        // في حالة checkbox، تأكد من تحويل القيمة إلى JSON
+        if ($field->type == 'checkbox') {
+            $value = $request->has($key) ? json_encode($request->input($key)) : json_encode([]);
+        }
+
+        OrderFieldAnswer::create([
+            'order_id' => $order->id,
+            'field_id' => $field->id,
+            'value' => is_array($value) ? json_encode($value) : $value,
+        ]);
+    }
+
+    return redirect()->route('admin.order.index')->with('success', 'تم تحديث الطلب بنجاح');
+}
+
+    function delete(Request $request){
+      $order_id = $request->id;
+      $order    = order::findOrFail($order_id);
+      $order->delete();
+      return redirect()->route('admin.order.index')->with('success', 'تم مسح الطلب بنجاح');
+    }
+
+
+
 
 }

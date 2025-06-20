@@ -70,4 +70,7 @@ use App\Http\Controllers\admin\ServiceFieldController;
     Route::get('/add', 'add')->name('admin.order.add');
     Route::get('/service-fields/{service}', 'getServiceFields')->name('admin.order.serviceFields');
     Route::post('/store', 'store')->name('admin.order.store');
+    Route::get('/orders/{order}/edit','edit')->name('admin.orders.edit');
+    Route::put('/orders/{order}','update')->name('admin.orders.update');
+    Route::post('delete', 'delete')->name('admin.orders.delete');
   });

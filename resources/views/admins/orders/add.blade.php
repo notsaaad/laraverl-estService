@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-sm-12 col-md-6 input-div">
-          <label>الخدمة</label>
+          <label>Technical</label>
           <select name="service_id" id="service_id" class="form-control select2" required onchange="loadFields(this.value)">
             <option disabled selected>Technical</option>
             @foreach ($techs as $tech)
