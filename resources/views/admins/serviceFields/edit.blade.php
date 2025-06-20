@@ -56,13 +56,14 @@
             </div>
           </div>
         @endforeach
-      </div>
-
-      <div class="row">
-        <div class="input-div">
-          <button type="submit" class="submit-btn btn btn-primary">حفظ التعديلات</button>
+        <div class="row">
+          <div class="input-div">
+            {{-- <button type="submit" class="submit-btn btn btn-primary">حفظ التعديلات</button> --}}
+            <input type="submit" value="حفظ التعديلات">
+          </div>
         </div>
       </div>
+
     </form>
   </div>
 </div>

@@ -27,7 +27,7 @@ class UserController extends Controller
         'role'     => 'required',
         'phone'    => 'required',
         'gender'   => 'required',
-        'job_id' => 'required_if:role,tech|exists:jobs,id',
+        'job_id'   => 'required_if:role,tech|nullable|exists:jobs,id',
       ]);
 
       $data['password'] = Hash::make($request->password);
@@ -65,7 +65,7 @@ class UserController extends Controller
         'role'     => 'required',
         'phone'    => 'required',
         'gender'   => 'required',
-        'job_id'   => 'required_if:role,tech|exists:jobs,id',
+        'job_id'   => 'required_if:role,tech|nullable|exists:jobs,id',
       ]);
 
       if($request->hasFile('image')){
