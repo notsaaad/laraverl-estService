@@ -46,11 +46,13 @@ public function store(Request $request, Service $service)
                 $value = json_encode($value, JSON_UNESCAPED_UNICODE);
             }
 
-            OrderFieldAnswer::create([
-                'order_id' => $order->id,
-                'field_id' => $field->id,
-                'value'    => $value,
-            ]);
+          if (!is_null($value)) {
+              OrderFieldAnswer::create([
+                  'order_id' => $order->id,
+                  'field_id' => $field->id,
+                  'value' => $value,
+              ]);
+          }
         }
     }
 
