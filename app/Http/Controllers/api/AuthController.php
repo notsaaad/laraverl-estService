@@ -31,6 +31,7 @@ class AuthController extends Controller
             'message'      => 'تم تسجيل الدخول بنجاح',
             'access_token' => $token,
             'token_type'   => 'Bearer',
+            'user_id'      => $user->id,
             'user'         => [
                 'id'    => $user->id,
                 'name'  => $user->name,
