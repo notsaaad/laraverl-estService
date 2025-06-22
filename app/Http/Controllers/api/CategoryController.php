@@ -39,6 +39,7 @@ class CategoryController extends Controller
           }
 
         $data = $services->map(function ($service) {
+
             return [
                 'id' => $service->id,
                 'title' => $service->name,
@@ -46,6 +47,9 @@ class CategoryController extends Controller
                 'price' => $service->price,
                 'category_name' => $service->category?->name,
                 'fields' => $service->fields->map(function ($field) {
+                    'options' => is_string($field->options)
+                    ? json_decode($field->options, true) ?? []
+                    : [],
                     return [
                         'id' => $field->id,
                         'label' => $field->label,

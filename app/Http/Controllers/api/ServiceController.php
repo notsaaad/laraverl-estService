@@ -28,6 +28,9 @@ class ServiceController extends Controller
                 'price' => $service->price,
                 'category_name' => $service->category?->name,
                 'fields' => $service->fields->map(function ($field) {
+                  'options' => is_string($field->options)
+                  ? json_decode($field->options, true) ?? []
+                  : [],
                     return [
                         'id' => $field->id,
                         'label' => $field->label,
@@ -54,6 +57,7 @@ class ServiceController extends Controller
       }
 
       return response()->json([
+
           'id' => $service->id,
           'title' => $service->name,
           'image' => URL::asset($path),
@@ -61,6 +65,9 @@ class ServiceController extends Controller
           'description' => $service->description,
           'category_name' => $service->category?->name,
           'fields' => $service->fields->map(function ($field) {
+            'options' => is_string($field->options)
+            ? json_decode($field->options, true) ?? []
+            : [],
               return [
                   'id' => $field->id,
                   'label' => $field->label,
