@@ -33,7 +33,7 @@ class ServiceController extends Controller
     }
 
 
-    function single(){
+    function single(String $id){
       $service = Service::with('category')
           ->select('id', 'name', 'image', 'price', 'category_id', 'description')
           ->findOrFail($id);
