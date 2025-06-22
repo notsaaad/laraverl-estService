@@ -45,6 +45,15 @@ class CategoryController extends Controller
                 'image' => $service->image,
                 'price' => $service->price,
                 'category_name' => $service->category?->name,
+                'fields' => $service->fields->map(function ($field) {
+                    return [
+                        'id' => $field->id,
+                        'label' => $field->label,
+                        'type' => $field->type,
+                        'options' => $field->options,
+                        'required' => (bool) $field->required,
+                    ];
+                })->toArray(), 
             ];
         });
 
