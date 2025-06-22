@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,13 @@ use App\Http\Controllers\ServiceController;
 */
 
 Route::get('services', [ServiceController::class, 'api']);
+
+
+
+Route::controller(AuthController::class)->group(function(){
+  Route::post('/login',  'login');
+  Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/profile',  'profile');
+    Route::post('/logout',  'logout');
+  });
+});
