@@ -33,7 +33,7 @@ Route::controller(AuthController::class)->group(function(){
 
 Route::controller(CategoryController::class)->prefix('categories')->group(function(){
   Route::get('/', 'index');
-  Route::get('{id}/services');
+  Route::get('{id}/services', 'services');
 });
 
 Route::controller(ServiceController::class)->prefix('services')->group(function(){
