@@ -30,7 +30,9 @@ class CategoryController extends Controller
           ->select('id', 'name', 'image', 'price', 'description')
           ->get();
 
-          $service->title = $service->name;
+      foreach ($services as $service) {
+        $service->title = $service->name;
+      }
 
       return response()->json($services);
     }
