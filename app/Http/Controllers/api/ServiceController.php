@@ -90,7 +90,7 @@ class ServiceController extends Controller
     }
 
     $services = Service::where(function ($q) use ($keyword) {
-            $q->where('title', 'LIKE', "%$keyword%");
+            $q->where('name', 'LIKE', "%$keyword%");
         })
         ->take(10)
         ->get();
