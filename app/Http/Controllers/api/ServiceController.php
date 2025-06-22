@@ -26,7 +26,7 @@ class ServiceController extends Controller
                 'image' => $service->image,
                 'price' => $service->price,
                 'category_name' => $service->category?->name,
-            ]
+            ];
         });
 
         return response()->json($data);
