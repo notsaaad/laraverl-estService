@@ -22,4 +22,14 @@ class CategoryController extends Controller
       return response()->json($Category);
     }
 
+
+    function services($id){
+      $services = Service::where('category_id', $id)
+          ->where('active', 1)
+          ->select('id', 'title', 'image', 'price', 'description')
+          ->get();
+
+      return response()->json($services);
+    }
+
 }
