@@ -6,13 +6,14 @@ use App\Models\Job;
 use App\Models\Order;
 use App\Models\Report;
 use App\Models\Wallet;
-// use Illuminate\Auth\Authenticatable;
 use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
