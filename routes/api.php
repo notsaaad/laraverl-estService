@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\OrderController;
 use App\Http\Controllers\api\ServiceController;
 use App\Http\Controllers\api\CategoryController;
 
@@ -40,4 +41,9 @@ Route::controller(ServiceController::class)->prefix('services')->group(function(
   Route::get('/', 'index');
   Route::get('/{id}', 'single');
   Route::get('search', 'search');
+});
+
+
+Route::controller(OrderController::class)->group(function(){
+  Route::post('/orders', 'store');
 });
