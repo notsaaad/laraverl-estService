@@ -98,7 +98,7 @@ class ServiceController extends Controller
 
       return response()->json([
         'success'  => true,
-        'services' => $results,
+        'services' => $services,
       ]);
     }
 }
