@@ -33,7 +33,7 @@ class ServiceController extends Controller
     }
 
 
-    function single(String $id){
+    function single($id){
       $service = Service::with('category')
           ->select('id', 'name', 'image', 'price', 'category_id', 'description')
           ->findOrFail($id);
@@ -51,6 +51,29 @@ class ServiceController extends Controller
           'price' => $service->price,
           'description' => $service->description,
           'category_name' => $service->category?->name,
+      ]);
+    }
+
+    function search(Request $request){
+    $keyword = $request->input('query');
+
+    if (!$keyword) {
+        return response()->json([
+            'success' => false,
+            'message' => 'يرجى إدخال كلمة البحث'
+        ], 400);
+    }
+
+    $services = Service::where(function ($q) use ($keyword) {
+            $q->where('title', 'LIKE', "%$keyword%")
+        })
+        ->take(10)
+        ->get();
+
+
+      return response()->json([
+        'success'  => true,
+        'services' => $results,
       ]);
     }
 }
