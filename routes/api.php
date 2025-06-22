@@ -40,7 +40,7 @@ Route::controller(CategoryController::class)->prefix('categories')->group(functi
 Route::controller(ServiceController::class)->prefix('services')->group(function(){
   Route::get('/', 'index');
   Route::get('/{id}', 'single');
-  Route::get('search', 'search');
+  Route::get('/search', 'search');
 });
 
 
