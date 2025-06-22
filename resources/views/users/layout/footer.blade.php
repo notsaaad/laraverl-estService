@@ -33,15 +33,16 @@
                 ساعات العمل
               </span>
               <ul>
-                <li class="mt-2">السبت - الخميس: 9:00 صباحًا - 11:00 مساءً</li>
-                <li class="mt-2">الجمعة مغلق</li>
+                <li class="mt-2">السبت - الجمعة: طوال اليوم</li>
               </ul>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 text-center">
               <span class="fw-bold">
                 تواصل معانا
               </span>
-            </div>
+              <ul>
+                <li class="mt-2">0122548863</li>
+              </ul>
           </div>
 
           <div class="footer-foot mt-2">
