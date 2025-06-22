@@ -30,11 +30,25 @@ class CategoryController extends Controller
           ->select('id', 'name', 'image', 'price', 'description')
           ->get();
 
-      foreach ($services as $service) {
-        $service->title = $service->name;
-      }
+        foreach ($services as $service) {
+            $path       = default_service_image();
+            if($service->image){
+              $path = ServiceImagePath().$service->image;
+            }
+            $service->image = URL::asset($path);
+          }
 
-      return response()->json($services);
+        $data = $services->map(function ($service) {
+            return [
+                'id' => $service->id,
+                'title' => $service->name,
+                'image' => $service->image,
+                'price' => $service->price,
+                'category_name' => $service->category?->name,
+            ];
+        });
+
+        return response()->json($data);
     }
 
 }
