@@ -18,7 +18,7 @@ class CategoryController extends Controller
         }
         $cat->image = URL::asset($path);
       }
+      return response()->json($Category);
     }
 
-    return response()->json($Category);
 }
