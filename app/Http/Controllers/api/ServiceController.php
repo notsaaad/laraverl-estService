@@ -94,7 +94,13 @@ class ServiceController extends Controller
         })
         ->take(10)
         ->get();
-
+        foreach ($services as $service) {
+            $path       = default_service_image();
+            if($service->image){
+              $path = ServiceImagePath().$service->image;
+            }
+            $service->image = URL::asset($path);
+          }
 
       return response()->json([
         'success'  => true,
