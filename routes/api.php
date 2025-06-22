@@ -27,3 +27,9 @@ Route::controller(AuthController::class)->group(function(){
     Route::post('/logout',  'logout');
   });
 });
+
+
+
+Route::controller(CategoryController::class)->prefix('categories')->group(function(){
+  Route::get('/', 'index');
+});
