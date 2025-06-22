@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\ServiceController;
 use App\Http\Controllers\api\CategoryController;
 
 /*
@@ -32,5 +32,9 @@ Route::controller(AuthController::class)->group(function(){
 
 
 Route::controller(CategoryController::class)->prefix('categories')->group(function(){
+  Route::get('/', 'index');
+});
+
+Route::controller(ServiceController::class)->prefix('services')->group(function(){
   Route::get('/', 'index');
 });
