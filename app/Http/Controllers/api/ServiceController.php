@@ -20,13 +20,25 @@ class ServiceController extends Controller
           }
         // تنسيق JSON حسب ما يحتاج Flutter
         $data = $services->map(function ($service) {
+        $data = $services->map(function ($service) {
             return [
                 'id' => $service->id,
                 'title' => $service->name,
                 'image' => $service->image,
                 'price' => $service->price,
                 'category_name' => $service->category?->name,
+                'fields' => $service->fields->map(function ($field) {
+                    return [
+                        'id' => $field->id,
+                        'label' => $field->label,
+                        'type' => $field->type,
+                        'options' => $field->options,
+                        'required' => (bool) $field->required,
+                    ];
+                })->toArray(),
             ];
+        });
+
         });
 
         return response()->json($data);
@@ -44,14 +56,25 @@ class ServiceController extends Controller
             }
             $service->image = URL::asset($path);
 
-      return response()->json([
-          'id' => $service->id,
-          'title' => $service->name,
-          'image' => $service->image,
-          'price' => $service->price,
-          'description' => $service->description,
-          'category_name' => $service->category?->name,
-      ]);
+        $data = $services->map(function ($service) {
+            return [
+                'id' => $service->id,
+                'title' => $service->name,
+                'image' => $service->image,
+                'price' => $service->price,
+                'category_name' => $service->category?->name,
+                'fields' => $service->fields->map(function ($field) {
+                    return [
+                        'id' => $field->id,
+                        'label' => $field->label,
+                        'type' => $field->type,
+                        'options' => $field->options,
+                        'required' => (bool) $field->required,
+                    ];
+                })->toArray(),
+            ];
+        });
+
     }
 
     function search(Request $request){
