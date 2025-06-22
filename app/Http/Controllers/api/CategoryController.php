@@ -15,7 +15,7 @@ class CategoryController extends Controller
     foreach ($Category as $cat) {
         $path       = default_category_image();
         if($cat->image){
-          $path = $cat->image;
+          $path = CategoriesImagePath().$cat->image;
         }
         $cat->image = URL::asset($path);
       }
