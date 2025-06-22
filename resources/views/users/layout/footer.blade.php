@@ -24,8 +24,8 @@
               <ul class="footer-menu">
                 <li><a href="{{ route('HomePage') }}">الرئيسة</a></li>
                 <li><a href="{{ route('servicesPage') }}">الخدمات</a></li>
-                <li><a href="#">من نحن</a></li>
-                <li><a href="#">اتصل بنا</a></li>
+                <li><a href="{{route('aboutUsPage')}}">من نحن</a></li>
+                <li><a href="{{route('contactUsPage')}}">اتصل بنا</a></li>
               </ul>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3 text-center">
