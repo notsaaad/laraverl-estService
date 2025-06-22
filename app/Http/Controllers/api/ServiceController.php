@@ -46,34 +46,30 @@ class ServiceController extends Controller
 
 
     function single($id){
-      $service = Service::with('category')
-          ->select('id', 'name', 'image', 'price', 'category_id', 'description')
-          ->findOrFail($id);
+      $service = Service::with('category', 'fields')->findOrFail($id);
 
-            $path       = default_service_image();
-            if($service->image){
-              $path = ServiceImagePath().$service->image;
-            }
-            $service->image = URL::asset($path);
+      $path = default_service_image();
+      if ($service->image) {
+          $path = ServiceImagePath() . $service->image;
+      }
 
-        $data = $service->map(function ($service) {
-            return [
-                'id' => $service->id,
-                'title' => $service->name,
-                'image' => $service->image,
-                'price' => $service->price,
-                'category_name' => $service->category?->name,
-                'fields' => $service->fields->map(function ($field) {
-                    return [
-                        'id' => $field->id,
-                        'label' => $field->label,
-                        'type' => $field->type,
-                        'options' => $field->options,
-                        'required' => (bool) $field->required,
-                    ];
-                })->toArray(),
-            ];
-        });
+      return response()->json([
+          'id' => $service->id,
+          'title' => $service->name,
+          'image' => URL::asset($path),
+          'price' => $service->price,
+          'description' => $service->description,
+          'category_name' => $service->category?->name,
+          'fields' => $service->fields->map(function ($field) {
+              return [
+                  'id' => $field->id,
+                  'label' => $field->label,
+                  'type' => $field->type,
+                  'options' => $field->options,
+                  'required' => (bool) $field->required,
+              ];
+          })->toArray(),
+      ]);
 
     }
 

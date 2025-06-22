@@ -25,30 +25,38 @@ class CategoryController extends Controller
 
 
     function services($id){
-      $service = Service::with('category', 'fields')->findOrFail($id);
+      $services = Service::where('category_id', $id)
+          ->where('active', 1)
+          ->select('id', 'name', 'image', 'price', 'description', 'category_id')
+          ->get();
 
-          $path = default_service_image();
-          if ($service->image) {
-              $path = ServiceImagePath() . $service->image;
+        foreach ($services as $service) {
+            $path       = default_service_image();
+            if($service->image){
+              $path = ServiceImagePath().$service->image;
+            }
+            $service->image = URL::asset($path);
           }
 
-          return response()->json([
-              'id' => $service->id,
-              'title' => $service->name,
-              'image' => URL::asset($path),
-              'price' => $service->price,
-              'description' => $service->description,
-              'category_name' => $service->category?->name,
-              'fields' => $service->fields->map(function ($field) {
-                  return [
-                      'id' => $field->id,
-                      'label' => $field->label,
-                      'type' => $field->type,
-                      'options' => $field->options,
-                      'required' => (bool) $field->required,
-                  ];
-              })->toArray(),
-          ]);
+        $data = $services->map(function ($service) {
+            return [
+                'id' => $service->id,
+                'title' => $service->name,
+                'image' => $service->image,
+                'price' => $service->price,
+                'category_name' => $service->category?->name,
+                'fields' => $service->fields->map(function ($field) {
+                    return [
+                        'id' => $field->id,
+                        'label' => $field->label,
+                        'type' => $field->type,
+                        'options' => $field->options,
+                        'required' => (bool) $field->required,
+                    ];
+                })->toArray(),
+            ];
+        });
+
         return response()->json($data);
     }
 
