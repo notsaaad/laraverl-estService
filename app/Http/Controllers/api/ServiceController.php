@@ -31,4 +31,26 @@ class ServiceController extends Controller
 
         return response()->json($data);
     }
+
+
+    function single(){
+      $service = Service::with('category')
+          ->select('id', 'name', 'image', 'price', 'category_id', 'description')
+          ->findOrFail($id);
+
+            $path       = default_service_image();
+            if($service->image){
+              $path = ServiceImagePath().$service->image;
+            }
+            $service->image = URL::asset($path);
+
+      return response()->json([
+          'id' => $service->id,
+          'title' => $service->name,
+          'image' => $service->image,
+          'price' => $service->price,
+          'description' => $service->description,
+          'category_name' => $service->category?->name,
+      ]);
+    }
 }
