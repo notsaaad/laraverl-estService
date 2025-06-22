@@ -30,6 +30,8 @@ class CategoryController extends Controller
           ->select('id', 'name', 'image', 'price', 'description')
           ->get();
 
+          $service->title = $service->name;
+
       return response()->json($services);
     }
 
