@@ -27,7 +27,7 @@ class CategoryController extends Controller
     function services($id){
       $services = Service::where('category_id', $id)
           ->where('active', 1)
-          ->select('id', 'title', 'image', 'price', 'description')
+          ->select('id', 'name', 'image', 'price', 'description')
           ->get();
 
       return response()->json($services);
