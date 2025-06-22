@@ -19,7 +19,7 @@ class ServiceController extends Controller
             $service->image = URL::asset($path);
           }
         // تنسيق JSON حسب ما يحتاج Flutter
-        $data = $services->map(function ($service) {
+
         $data = $services->map(function ($service) {
             return [
                 'id' => $service->id,
@@ -39,7 +39,7 @@ class ServiceController extends Controller
             ];
         });
 
-        });
+
 
         return response()->json($data);
     }
@@ -56,7 +56,7 @@ class ServiceController extends Controller
             }
             $service->image = URL::asset($path);
 
-        $data = $services->map(function ($service) {
+        $data = $service->map(function ($service) {
             return [
                 'id' => $service->id,
                 'title' => $service->name,
