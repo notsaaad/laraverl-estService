@@ -151,7 +151,7 @@
           <img class="img-fluid w-100" src="{{ URL::asset('public/users/images//Home/3.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img class="img-fluid w-100" src="{{ URL::asset('public/users/images//Home/.png') }}" alt="">
+          <img class="img-fluid w-100" src="{{ URL::asset('public/users/images//Home/4.png') }}" alt="">
         </div>
       </div>
     </section>
