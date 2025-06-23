@@ -142,16 +142,16 @@
 
       <div class="row g-2 m-5">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="{{ URL::asset('public/images/users/Home/1.png') }}" alt="">
+          <img src="{{ URL::asset('public/users/images//Home/1.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="{{ URL::asset('public/images/users/Home/2.png') }}" alt="">
+          <img src="{{ URL::asset('public/users/images//Home/2.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="{{ URL::asset('public/images/users/Home/3.png') }}" alt="">
+          <img src="{{ URL::asset('public/users/images//Home/3.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <img src="{{ URL::asset('public/images/users/Home/4.png') }}" alt="">
+          <img src="{{ URL::asset('public/users/images//Home/.png') }}" alt="">
         </div>
       </div>
     </section>
