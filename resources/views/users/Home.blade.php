@@ -142,16 +142,16 @@
 
       <div class="row g-2 m-5">
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <div class="single-rate"></div>
+          <img src="{{ URL::asset('public/users/Home/1.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <div class="single-rate"></div>
+          <img src="{{ URL::asset('public/users/Home/1.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <div class="single-rate"></div>
+          <img src="{{ URL::asset('public/users/Home/1.png') }}" alt="">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
-          <div class="single-rate"></div>
+          <img src="{{ URL::asset('public/users/Home/1.png') }}" alt="">
         </div>
       </div>
     </section>
